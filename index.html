@@ -53,7 +53,7 @@ a.sec{background:#2a3145;color:#cfe;font-weight:600}
 <script src="config.js"></script>
 <script>
 const SELLER="rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",PRICE="11820000",WSS=["wss://testnet.xrpl-labs.com","wss://s.altnet.rippletest.net:51233"],EXP="https://testnet.xrpl.org";
-const $=id=>document.getElementById(id);$('sel').textContent=SELLER;$('sel2').textContent=SELLER;
+const $=id=>document.getElementById(id);$('sel').textContent=SELLER;
 let POOL=[],byUri={},ws=null,wsi=0,reqId=1,pend={},spinTimer=null,watching=null,known=null;
 function conn(){return new Promise((res,rej)=>{if(ws&&ws.readyState===1)return res(ws);const s=new WebSocket(WSS[wsi%WSS.length]);
  s.onopen=()=>{ws=s;res(s)};s.onerror=()=>{wsi++;rej(new Error('ws'))};s.onclose=()=>{ws=null};
