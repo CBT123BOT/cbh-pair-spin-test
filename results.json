@@ -7,7 +7,7 @@
  "pairs_total": 5,
  "pairs_left": 3,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T16:27:07.091243+00:00",
+ "updated": "2026-10-17T16:27:26.975192+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -88,6 +88,20 @@
     "mint_tx": "EA5330BDA4552E337D6D06025E8A48F5A605FF2D684F544A2464CB75ADDA0CB7",
     "name": "Gordo Sweepstakes #0966 \u2022 3D TwiN"
    }
+  },
+  {
+   "t": 1792254440.6192992,
+   "time_utc": "2026-10-17T16:27:20.619304+00:00",
+   "payment_tx": "CE8E64EF4CEC7CD90C59340A52C01E86C3D605EC78691736A7483FD889FFB202",
+   "ledger_index": 21609308,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "11820000",
+   "expected_drops": "14220000",
+   "action": "refund",
+   "reason": "WRONG_AMOUNT",
+   "refund_drops": "11820000",
+   "refund_tx": "BB9F1BDB8BD9947871A0494B026BF297677D92595ECF376646180DCDC088D200",
+   "refund_result": "tesSUCCESS"
   }
  ]
 }
