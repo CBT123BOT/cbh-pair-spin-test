@@ -4,7 +4,18 @@
  "spins_per_pair": 3,
  "stash_left": 30,
  "used_pairs": {},
- "events": [],
+ "events": [
+  {
+   "t": 1792264482.8362038,
+   "time_utc": "2026-10-17T19:14:42.836207+00:00",
+   "proof_tx": "68CA815BC0676DE62359F711C59C348D1829219E5097DEAD671B05ECEF1FD4DF",
+   "ledger_index": 21612289,
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "piece": "0966",
+   "action": "rejected",
+   "reason": "MISSING_COIN_ON_TWIN"
+  }
+ ],
  "rule": "pick i = SHA-256(proof tx hash + validating ledger hash + i) mod stash size (sorted NFTokenIDs, shrinks each pick)",
- "updated": "2026-10-17T19:14:20.630208+00:00"
+ "updated": "2026-10-17T19:14:43.165372+00:00"
 }
