@@ -70,8 +70,18 @@
      "result": "tesSUCCESS"
     }
    }
+  },
+  {
+   "t": 1792264564.6111064,
+   "time_utc": "2026-10-17T19:16:04.611110+00:00",
+   "proof_tx": "5B25E88D844B959760012B45D175D942FA502B154F0E57A481E008A140026486",
+   "ledger_index": 21612314,
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "piece": "0405",
+   "action": "rejected",
+   "reason": "PAIR_ALREADY_USED"
   }
  ],
  "rule": "pick i = SHA-256(proof tx hash + validating ledger hash + i) mod stash size (sorted NFTokenIDs, shrinks each pick)",
- "updated": "2026-10-17T19:15:25.953823+00:00"
+ "updated": "2026-10-17T19:16:04.823702+00:00"
 }
