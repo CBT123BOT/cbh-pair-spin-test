@@ -2,8 +2,15 @@
  "network": "XRPL TESTNET",
  "wallet": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
  "spins_per_pair": 3,
- "stash_left": 30,
- "used_pairs": {},
+ "stash_left": 27,
+ "used_pairs": {
+  "0405": {
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "proof_tx": "41B316D9A52DCDC7BBE3A8995CAD56F76D45A9BE71B65EBC5314D18844B84EA1",
+   "kind": "dynamic",
+   "status": "paid"
+  }
+ },
  "events": [
   {
    "t": 1792264482.8362038,
@@ -14,8 +21,57 @@
    "piece": "0966",
    "action": "rejected",
    "reason": "MISSING_COIN_ON_TWIN"
+  },
+  {
+   "t": 1792264492.3768423,
+   "time_utc": "2026-10-17T19:14:52.376845+00:00",
+   "proof_tx": "41B316D9A52DCDC7BBE3A8995CAD56F76D45A9BE71B65EBC5314D18844B84EA1",
+   "ledger_index": 21612291,
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "piece": "0405",
+   "action": "spins",
+   "kind": "dynamic",
+   "ledger_hash": "0CEE00C602879BD6F8305277BE6B5EA7D6AF49F9A7846B0A140CE344F49F279F",
+   "picks": [
+    {
+     "spin": 1,
+     "index": 19,
+     "nft_id": "00080000DF9E30F5734320D1D1FFBF0BE460E811777E001EB02D0F5B0149B8BD",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/022.json",
+     "offer_id": "C8FBA2EA7D6FDB34C6174CAF75EEA9547AFECF78851B2F0E92DFE251B87D6EA9",
+     "offer_tx": "7D7C5D91F722E7951E557BFEC5CF1D5E26D6253E7EE3080E0B21EBBBB7080197"
+    },
+    {
+     "spin": 2,
+     "index": 0,
+     "nft_id": "00080000DF9E30F5734320D1D1FFBF0BE460E811777E001E0BC4535F0149B8C1",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/048.json",
+     "offer_id": "B58ACD4B4631454B774617C724EC5B3412D342A62DD64282E7EBDE74B573C968",
+     "offer_tx": "091D97B078735F2F8C20006E7961C176F27E56A400046E7CEEF324FFB390A40F"
+    },
+    {
+     "spin": 3,
+     "index": 21,
+     "nft_id": "00080000DF9E30F5734320D1D1FFBF0BE460E811777E001ECF52EA400149B8A8",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/001.json",
+     "offer_id": "EAFD980A28D33E7E404910FB3FE0DC90A78B57FB405C6AA51EEC2891E18420A2",
+     "offer_tx": "7EA0D807A5C5D8EEA87CB4F68E6B90A5D835E7BDAB3E46B45984438DA3EB861F"
+    }
+   ],
+   "coin_removed": {
+    "polaroid": {
+     "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E7E4168650149B8C6",
+     "tx": "934736B54678C655157A009F2BBB3A0F853FDCE248B72CBB09B88601BB6A79F3",
+     "result": "tesSUCCESS"
+    },
+    "twin": {
+     "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E952739670149B8C7",
+     "tx": "D1282D6A944A56ABCBE6DEF3DDFE5A4F2307FA234469992FE9E68F9AD822758E",
+     "result": "tesSUCCESS"
+    }
+   }
   }
  ],
  "rule": "pick i = SHA-256(proof tx hash + validating ledger hash + i) mod stash size (sorted NFTokenIDs, shrinks each pick)",
- "updated": "2026-10-17T19:14:43.165372+00:00"
+ "updated": "2026-10-17T19:15:25.953823+00:00"
 }
