@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="img/favicon.png">
 <title>TESTNET · Crypto Bros&amp;Ho's Trading Company · Pair SPIN</title>
 <style>
 body{font-family:system-ui,sans-serif;background:#0d0f14;color:#eee;margin:0 auto;padding:16px;max-width:760px}
@@ -27,7 +27,16 @@ a.sec{background:#2a3145;color:#cfe;font-weight:600}
 .hist .row{background:#171b26;border-radius:10px;padding:10px;margin:8px 0}
 #qr{display:none;text-align:center;margin:10px 0}#qr img{background:#fff;padding:8px;border-radius:8px}
 .claim{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;margin:-16px -16px 12px;padding:10px 14px;background:linear-gradient(180deg,#1a1508,#0d0f14);border-bottom:2px solid #f5c542;box-shadow:0 4px 18px rgba(245,197,66,.18)}
+.plug{width:54px;height:54px;flex:0 0 54px;perspective:400px}.plug img{width:100%;height:100%;border-radius:50%;animation:coin 6s linear infinite;filter:drop-shadow(0 0 6px rgba(245,197,66,.55))}
+@keyframes coin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
+@media (prefers-reduced-motion:reduce){.plug img{animation:none}}
+.tb-info{flex:1;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.chip{border:1px solid #f5c542;border-radius:999px;padding:5px 11px;font-weight:800;color:#f5c542;background:rgba(245,197,66,.08);font-size:.92em;white-space:nowrap}
+.chip small{color:#cdb46a;font-weight:600;margin-right:4px}
 </style></head><body>
+<div class="topbar"><div class="plug"><img src="img/the_plug.png" alt="THE plug, Crypto Bros &amp; Ho's Trading Company"></div><div class="tb-info"><span class="chip"><small>DROP</small><span id="wv2">…</span></span><span class="chip"><small>MINT</small><span class="pz">…</span> XRP</span></div></div>
 <div class="title" data-text="Crypto Bros&amp;Ho's Trading Company" role="heading" aria-level="1">Crypto Bros&amp;Ho's Trading Company</div>
 <div class="tn">⚠️ XRPL TESTNET ONLY · TEST XRP HAS NO VALUE · DO NOT SEND REAL XRP ⚠️</div>
 <h1>Pair SPIN 🎰 <span id="wv">…</span> (test)</h1>
@@ -72,7 +81,7 @@ async function loadPrice(out){try{if(!WAVES)WAVES=await (await fetch('waves.json
  const w=WAVES.waves.find(w=>sold<Number(w.until_pairs_sold));const last=WAVES.waves[WAVES.waves.length-1];
  left=Math.max(0,Math.min(POOL.length||Infinity,Number(last.until_pairs_sold))-sold);$('left').textContent=left;
  if(w){WAVE=w.id;PRICE_XRP=w.price_xrp;PRICE=drops(w.price_xrp);priceOk=/^\d+(\.\d{1,6})?$/.test(w.price_xrp)&&Number(PRICE)>0}else{WAVE='SOLD OUT';priceOk=true;left=0}
- $('wv').textContent=WAVE;document.querySelectorAll('.pz').forEach(e=>e.textContent=PRICE_XRP||'—');
+ $('wv').textContent=WAVE;$('wv2').textContent=WAVE;document.querySelectorAll('.pz').forEach(e=>e.textContent=PRICE_XRP||'—');
 }catch(e){priceOk=false;$('left').textContent='?'}gateBtn()}
 async function scan(addr,out){out=out||await history_();loadPrice(out);const pays={};
  for(const {tx,meta,h} of out){if(tx.TransactionType==='Payment'&&tx.Destination===SELLER&&tx.Account===addr&&meta.TransactionResult==='tesSUCCESS')pays[h]={h,amt:meta.delivered_amount,mints:[],refund:null,date:tx.date}}
