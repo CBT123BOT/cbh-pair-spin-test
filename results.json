@@ -1,13 +1,13 @@
 {
  "network": "XRPL TESTNET ONLY",
  "seller": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
- "wave": "D2",
- "price_xrp": "11.82",
- "pairs_sold": 1,
+ "wave": "D3",
+ "price_xrp": "14.22",
+ "pairs_sold": 2,
  "pairs_total": 5,
- "pairs_left": 4,
+ "pairs_left": 3,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T16:23:53.720717+00:00",
+ "updated": "2026-10-17T16:27:07.091243+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -53,6 +53,40 @@
     "offer_id": "EEC3B50B13BA6FCF7232E1AB08C8D19554EEA6C0C52862804508A70C7710A0E6",
     "mint_tx": "109173F24876578C93AD0BEF2FBCFFC631CE7A1D38C42224F87CE65DDCAA7AA6",
     "name": "Nina Floorman #0047 \u2022 3D TwiN"
+   }
+  },
+  {
+   "t": 1792254411.1459112,
+   "time_utc": "2026-10-17T16:26:51.145921+00:00",
+   "payment_tx": "7597E37691DEF4C3CC17317322A645BEAEF5F7B6CFEE355CFCC525B10B8E4365",
+   "ledger_index": 21609299,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "11820000",
+   "action": "pair",
+   "wave": "D2",
+   "price_drops": "11820000",
+   "piece": "0966",
+   "pick": {
+    "ledger_hash": "03FAEFED57BE322AC831697B9A684D3ED6D493F4ACA8AC9C5D7939AA274F8046",
+    "pool": [
+     "0248",
+     "0405",
+     "0637",
+     "0966"
+    ],
+    "index": 3
+   },
+   "polaroid": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E45F004390149B8A2",
+    "offer_id": "8BE252C296C72B7BB2F9067B28231C38719AE599F73824714459E69FEF85878F",
+    "mint_tx": "517261904A5CB91578A30AB04C04A9C2FA3724A7FF6DDF8BFDF5BC9938C5F2C9",
+    "name": "Gordo Sweepstakes #0966"
+   },
+   "twin": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E5CD5D53B0149B8A3",
+    "offer_id": "0BC8ED207D3641950893699D6FA45980E119A3E5181D1D2D02EC449E2A8C536D",
+    "mint_tx": "EA5330BDA4552E337D6D06025E8A48F5A605FF2D684F544A2464CB75ADDA0CB7",
+    "name": "Gordo Sweepstakes #0966 \u2022 3D TwiN"
    }
   }
  ]
