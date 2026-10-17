@@ -2,7 +2,12 @@
 <title>TESTNET · Crypto Bros&amp;Ho's Trading Company · Pair SPIN</title>
 <style>
 body{font-family:system-ui,sans-serif;background:#0d0f14;color:#eee;margin:0 auto;padding:16px;max-width:760px}
-.title{font-size:2.1em;font-weight:900;color:#f5c542;text-align:center;line-height:1.15;margin:4px 0 12px}
+.title{position:relative;display:block;width:fit-content;margin:6px auto 14px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.55em,7.4vw,2.6em);font-weight:900;line-height:1.12;text-align:center;letter-spacing:.5px;color:#6b4a0c;
+text-shadow:0 1px 0 #8a6414,0 2px 0 #7a5810,0 3px 0 #6b4a0c,0 4px 0 #5a3d08,0 5px 0 #4a3106,0 6px 1px rgba(0,0,0,.55),0 8px 6px rgba(0,0,0,.55),0 14px 18px rgba(0,0,0,.6)}
+.title::after{content:attr(data-text);position:absolute;inset:0;
+background:linear-gradient(180deg,#fff6c9 0%,#ffe27a 18%,#f5c542 38%,#c8921c 55%,#f7d262 70%,#fff0b0 82%,#b9801a 100%);
+-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.6px rgba(255,240,180,.55);text-shadow:none;
+filter:drop-shadow(0 -1px 0 rgba(255,255,230,.6))}
 h1{font-size:1.25em;color:#f5c542;margin:.5em 0}
 .tn{background:#b3261e;color:#fff;font-weight:800;text-align:center;padding:8px;border-radius:8px;letter-spacing:.5px}
 .note{background:#1c2130;border-left:4px solid #f5c542;padding:10px;border-radius:6px;font-size:.95em;word-break:break-word;margin:10px 0}
@@ -23,7 +28,7 @@ a.sec{background:#2a3145;color:#cfe;font-weight:600}
 #qr{display:none;text-align:center;margin:10px 0}#qr img{background:#fff;padding:8px;border-radius:8px}
 .claim{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 </style></head><body>
-<div class="title">Crypto Bros&amp;Ho's Trading Company</div>
+<div class="title" data-text="Crypto Bros&amp;Ho's Trading Company" role="heading" aria-level="1">Crypto Bros&amp;Ho's Trading Company</div>
 <div class="tn">⚠️ XRPL TESTNET ONLY · TEST XRP HAS NO VALUE · DO NOT SEND REAL XRP ⚠️</div>
 <h1>Pair SPIN 🎰 (D2 test)</h1>
 <div class="note">Pay <b>11.82 test XRP</b>, then the reels pick a random matched <b>Polaroid + 3D TwiN</b> pair. Nobody sees which pair you get until your payment is confirmed on the ledger. Wrong amount = no spin, your test XRP goes back.<br>
