@@ -5,7 +5,7 @@
   "d1": 3,
   "d2_plus": 2
  },
- "stash_left": 28,
+ "stash_left": 29,
  "used_pairs": {
   "0405": {
    "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
@@ -23,8 +23,8 @@
  "mn": {
   "open": true,
   "total": 14160,
-  "minted_total": 34,
-  "remaining": 14126,
+  "minted_total": 35,
+  "remaining": 14125,
   "first_wave_until": 33,
   "left_at_first_price": 0,
   "first_price_xrp": "1.11",
@@ -263,8 +263,43 @@
    "refund_drops": "1110000",
    "refund_tx": "1B63B84AB31AAC286D7025B4E1D3F895CFD56F61AE45B91B0262D549790EADD0",
    "refund_result": "tesSUCCESS"
+  },
+  {
+   "t": 1792273314.3301136,
+   "time_utc": "2026-10-17T21:41:54.330116+00:00",
+   "payment_tx": "16D6B58199EC6B952BEB1852E9E601ACEF28B41B6FC2C82F8DA28D8920835A65",
+   "ledger_index": 21614941,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "3330000",
+   "action": "mn_mint",
+   "qty": 1,
+   "wave": "normal",
+   "price_xrp": "3.33",
+   "ledger_hash": "2FC98FBD44106440F8F8B98BE9DADF928C0B5ACD9F16B7CF2038276798E6F975",
+   "picks": [
+    {
+     "i": 0,
+     "type": "mint",
+     "coin": 4645,
+     "metal": "Copper",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/4645.json",
+     "pool_size": 14126,
+     "index": 4612,
+     "status": "offered",
+     "attempts": [
+      {
+       "hash": "69E242881C946C9E1D21D560F9F9041353929B46E7769E72DA5356720C21CA52",
+       "lls": 21614962,
+       "seq": 21608677
+      }
+     ],
+     "nft_id": "00181388DF9E30F5734320D1D1FFBF0BE460E811777E001EA7ED056D0149B8D3",
+     "offer_id": "8FC2DF63C7DFECB7DC14986B2F12236250BB8D82FE506825FB8E567CDDB72938",
+     "mint_tx": "69E242881C946C9E1D21D560F9F9041353929B46E7769E72DA5356720C21CA52"
+    }
+   ]
   }
  ],
  "rule": "pick i = SHA-256(proof/payment tx hash + validating ledger hash + byte i) mod pool size; pool = stash NFTokenIDs sorted (vault spins, used first), then never-minted coin numbers sorted (mn_remaining.json); pool shrinks each pick",
- "updated": "2026-10-17T21:41:27.378952+00:00"
+ "updated": "2026-10-17T21:41:58.396064+00:00"
 }
