@@ -1,0 +1,11 @@
+{
+ "open": true,
+ "note": "TESTNET: first-wave threshold scaled down to test the price switch",
+ "first_wave": {
+  "price_xrp": "1.11",
+  "until_total_minted": 33
+ },
+ "normal_price_xrp": "3.33",
+ "max_per_tx": 10,
+ "total": 14160
+}
