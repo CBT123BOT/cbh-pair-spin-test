@@ -1,0 +1,16 @@
+{
+ "note": "One config for page + watcher. Price = first wave whose threshold is above pairs sold. TESTNET thresholds are scaled to the 5-pair test pool.",
+ "network": "XRPL TESTNET",
+ "mainnet_reference": {
+  "D1": {"until_sold_pct": 30, "status": "done (claim offers)"},
+  "D2": {"until_sold_pct": 60, "pair_price_xrp": "11.82"},
+  "D3": {"until_sold_pct": 90, "pair_price_xrp": "14.22"},
+  "D4": {"until_sold_pct": 100, "pair_price_xrp": "34.74", "label": "final 10%"}
+ },
+ "testnet_pool_pairs": 5,
+ "waves": [
+  {"id": "D2", "price_xrp": "11.82", "until_pairs_sold": 2},
+  {"id": "D3", "price_xrp": "14.22", "until_pairs_sold": 4},
+  {"id": "D4", "price_xrp": "34.74", "until_pairs_sold": 5}
+ ]
+}
