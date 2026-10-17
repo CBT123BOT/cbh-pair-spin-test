@@ -70,7 +70,7 @@ async function scan(addr){ // read seller history from the testnet ledger and re
   if(tx.TransactionType==='NFTokenMint'&&meta.TransactionResult==='tesSUCCESS'){const uri=hex2s(tx.URI||'');pays[ph].mints.push({h,uri,nft:meta.nftoken_id,offer:meta.offer_id,p:byUri[uri]})}
   if(tx.TransactionType==='NFTokenCreateOffer'&&meta.TransactionResult==='tesSUCCESS'){const mm=pays[ph].mints.find(x=>x.nft===tx.NFTokenID);if(mm)mm.offer=meta.offer_id}}
  return Object.values(pays).sort((a,b)=>b.date-a.date)}
-function claimHtml(p){const s=p.mints.map(m=>`<div><img src="${m.p?m.p.img:''}" style="width:100%;border-radius:8px"><b class="small" style="color:#eee">${m.p?m.p.name:m.uri}</b>
+function claimHtml(p){const s=[...p.mints].sort((a,b)=>(a.p&&a.p.kind==='polaroid'?0:1)-(b.p&&b.p.kind==='polaroid'?0:1)).map(m=>`<div><img src="${m.p?m.p.img:''}" style="width:100%;border-radius:8px"><b class="small" style="color:#eee">${m.p?m.p.name:m.uri}</b>
  ${m.offer?`<a class="btn" target="_blank" rel="noopener" href="https://test.bithomp.com/en/nft-offer/${m.offer}">Claim (accept 0 XRP offer)</a>`:'<div class="small">offer pending…</div>'}
  <a class="btn sec" target="_blank" rel="noopener" href="${EXP}/nft/${m.nft}">view on testnet explorer</a></div>`).join('');
  return `<div class="claim">${s}</div><div class="note"><b>Claim both:</b> in Xaman (on Testnet) open <b>Events → Requests</b>. You'll see 2 NFT offers for <b>0 XRP</b> from <span class="small">${SELLER}</span>. Accept both. Or use the Claim buttons above (Bithomp testnet, sign in with Xaman). Nothing should ever ask you to pay more XRP.</div>`}
