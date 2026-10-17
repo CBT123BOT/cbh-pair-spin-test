@@ -465,8 +465,18 @@
     }
    ],
    "coin_removed": null
+  },
+  {
+   "t": 1792273438.580355,
+   "time_utc": "2026-10-17T21:43:58.580367+00:00",
+   "proof_tx": "F5BC1AE85424E0B75D0856E00807EC90B3C48923B45BE87612D1C1B8AB64F485",
+   "ledger_index": 21614978,
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "piece": "0637",
+   "action": "rejected",
+   "reason": "PAIR_ALREADY_USED"
   }
  ],
  "rule": "pick i = SHA-256(proof/payment tx hash + validating ledger hash + byte i) mod pool size; pool = stash NFTokenIDs sorted (vault spins, used first), then never-minted coin numbers sorted (mn_remaining.json); pool shrinks each pick",
- "updated": "2026-10-17T21:43:35.797946+00:00"
+ "updated": "2026-10-17T21:43:58.761162+00:00"
 }
