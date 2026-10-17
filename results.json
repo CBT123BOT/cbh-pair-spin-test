@@ -3,11 +3,11 @@
  "seller": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
  "wave": "D3",
  "price_xrp": "14.22",
- "pairs_sold": 2,
+ "pairs_sold": 3,
  "pairs_total": 5,
- "pairs_left": 3,
+ "pairs_left": 2,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T16:27:26.975192+00:00",
+ "updated": "2026-10-17T16:27:53.277973+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -102,6 +102,39 @@
    "refund_drops": "11820000",
    "refund_tx": "BB9F1BDB8BD9947871A0494B026BF297677D92595ECF376646180DCDC088D200",
    "refund_result": "tesSUCCESS"
+  },
+  {
+   "t": 1792254460.4692914,
+   "time_utc": "2026-10-17T16:27:40.469296+00:00",
+   "payment_tx": "AD1DD7B08F9DE59CAD74E1D6855CBFE125BFDD58446EF8121F113DC103EB18F6",
+   "ledger_index": 21609314,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "14220000",
+   "action": "pair",
+   "wave": "D3",
+   "price_drops": "14220000",
+   "piece": "0637",
+   "pick": {
+    "ledger_hash": "C0103F9527408316F3D66C57B8D556F2A0ED5DDACE16412DE155205F059F4F66",
+    "pool": [
+     "0248",
+     "0405",
+     "0637"
+    ],
+    "index": 2
+   },
+   "polaroid": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E73BBA63B0149B8A4",
+    "offer_id": "F99A0F0960F689ABAF64C8BB25C336ADB465F4E426046A005A23A6C5E635BAA4",
+    "mint_tx": "47250005D5553BFFEB2ED1F258A680065A4EC799388DE056C43B1357AEDECD55",
+    "name": "Tank Stakely #0637"
+   },
+   "twin": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E8AA177450149B8A5",
+    "offer_id": "0B3C26CE2B2838628D0FC92014EA9AB03BD9DCC7CAB7FCB83A1BF6215DF99066",
+    "mint_tx": "232AB99505B24D2D8D162CC8B2D34F2643F47D9FA431DEDDB23F167DAFA96A08",
+    "name": "Tank Stakely #0637 \u2022 3D TwiN"
+   }
   }
  ]
 }
