@@ -2,12 +2,18 @@
  "network": "XRPL TESTNET",
  "wallet": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
  "spins_per_pair": 3,
- "stash_left": 27,
+ "stash_left": 24,
  "used_pairs": {
   "0405": {
    "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
    "proof_tx": "41B316D9A52DCDC7BBE3A8995CAD56F76D45A9BE71B65EBC5314D18844B84EA1",
    "kind": "dynamic",
+   "status": "paid"
+  },
+  "0047": {
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "proof_tx": "8F357FC40F9C081850AA8F4EEA0D95597676CBC8E9C02A560FD2467C89FDCC1D",
+   "kind": "d1",
    "status": "paid"
   }
  },
@@ -80,8 +86,45 @@
    "piece": "0405",
    "action": "rejected",
    "reason": "PAIR_ALREADY_USED"
+  },
+  {
+   "t": 1792264573.9980297,
+   "time_utc": "2026-10-17T19:16:13.998032+00:00",
+   "proof_tx": "8F357FC40F9C081850AA8F4EEA0D95597676CBC8E9C02A560FD2467C89FDCC1D",
+   "ledger_index": 21612316,
+   "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "piece": "0047",
+   "action": "spins",
+   "kind": "d1",
+   "ledger_hash": "C864B0052B7D21C6CCEBAAB0D16E96E71DFFC5659B1BE253449DE8D3EEFCBE10",
+   "picks": [
+    {
+     "spin": 1,
+     "index": 4,
+     "nft_id": "00080000DF9E30F5734320D1D1FFBF0BE460E811777E001E2AEA2E440149B8AC",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/005.json",
+     "offer_id": "9FC1CF22AACB61D8CB5C4095210017893FBF13225671FCE51E4192F09126ACDD",
+     "offer_tx": "85498B2D566B591D44B04D387A39F8A67D67167C29792E1707535C367DB8D8A2"
+    },
+    {
+     "spin": 2,
+     "index": 18,
+     "nft_id": "00080000DF9E30F5734320D1D1FFBF0BE460E811777E001EC712E05A0149B8BE",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/023.json",
+     "offer_id": "46BE35541592032E810DF420C892B09948D50EA7D832F2D6EEC0AF9579FAB7D2",
+     "offer_tx": "03E17C3C7D73E90107C5FCB924FAAFEF58C06DD799B63ABF3370D06DF545A96F"
+    },
+    {
+     "spin": 3,
+     "index": 11,
+     "nft_id": "00080000DF9E30F5734320D1D1FFBF0BE460E811777E001E6B7B9C560149B8BA",
+     "uri": "ipfs://bafybeidmhjsm45ld37ve7xcajuvmkzwetdifhxiyylr7mfqusgczga7hzi/019.json",
+     "offer_id": "CBF8AA4B6ACC6C499F2AD20908E562F6FD735FE7BBC69AB1DE8352E1833E8DC6",
+     "offer_tx": "811E6DA79EE3EB6E1C4A8AA0DCCDCBEBE4AC8E67A33BE8429A88F2FEE6282740"
+    }
+   ]
   }
  ],
  "rule": "pick i = SHA-256(proof tx hash + validating ledger hash + i) mod stash size (sorted NFTokenIDs, shrinks each pick)",
- "updated": "2026-10-17T19:16:04.823702+00:00"
+ "updated": "2026-10-17T19:16:37.275984+00:00"
 }
