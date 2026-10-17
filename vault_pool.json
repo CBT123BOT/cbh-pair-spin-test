@@ -48,6 +48,12 @@
    "polaroid_uri": "ipfs://TEST-D1/polaroid_0047.json",
    "twin_uri": "ipfs://TEST-D1/twin_0047.json",
    "img": "img/polaroid_0047.webp"
+  },
+  "0048": {
+   "name": "Test D1 #0048",
+   "polaroid_uri": "ipfs://TEST-D1/polaroid_0048.json",
+   "twin_uri": "ipfs://TEST-D1/twin_0048.json",
+   "img": "img/polaroid_0047.webp"
   }
  }
 }
