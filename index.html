@@ -140,5 +140,5 @@ fetch('pool.json?'+Date.now()).then(r=>r.json()).then(j=>{POOL=j.pairs;for(const
  const q=new URLSearchParams(location.search).get('wallet');if(q&&valid(q)&&!$('w').value)$('w').value=q;gateBtn();resume()});
 setInterval(()=>loadPrice(),30000);
 $('w').addEventListener('input',gateBtn);$('w').addEventListener('change',()=>refresh().catch(()=>{}));
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh().catch(()=>{})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)resume()});window.addEventListener('pageshow',e=>{if(e.persisted)resume()});
 </script></body></html>
