@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TESTNET · CB&amp;H Pair SPIN (D2 test)</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0f14;color:#eee;margin:0 auto;padding:16px;max-width:760px}
+h1{font-size:1.4em;color:#f5c542;margin:.4em 0}
+.tn{background:#b3261e;color:#fff;font-weight:800;text-align:center;padding:8px;border-radius:8px;letter-spacing:.5px}
+.note{background:#1c2130;border-left:4px solid #f5c542;padding:10px;border-radius:6px;font-size:.95em;word-break:break-word;margin:10px 0}
+input{width:100%;box-sizing:border-box;padding:12px;font-size:1em;border-radius:8px;border:1px solid #444;background:#151922;color:#fff;margin:8px 0}
+.stats{display:flex;gap:10px;margin:10px 0}.stats div{flex:1;background:#171b26;border-radius:10px;padding:10px;text-align:center}.stats b{display:block;font-size:1.5em;color:#f5c542}
+.machine{background:linear-gradient(#2a2410,#171b26);border:3px solid #f5c542;border-radius:16px;padding:14px;margin:14px 0}
+.reels{display:grid;grid-template-columns:1fr 1fr;gap:12px}.reel{background:#0b0d12;border-radius:10px;overflow:hidden;position:relative;aspect-ratio:1}
+.reel img{width:100%;height:100%;object-fit:cover;display:block}.reel .lab{position:absolute;bottom:0;left:0;right:0;background:#000a;font-size:.8em;padding:5px;text-align:center}
+.reel .q{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4em;color:#f5c542;text-shadow:0 0 12px #000}
+.spinning img{filter:blur(7px) brightness(.7)}
+button.spin{display:block;width:100%;margin-top:12px;padding:16px;font-size:1.4em;font-weight:900;border:0;border-radius:12px;background:#f5c542;color:#111;cursor:pointer;letter-spacing:2px}
+button.spin:disabled{background:#6b5a22;color:#333}
+#status{margin:10px 0;font-size:1.05em;min-height:1.3em}
+a.btn{display:block;margin-top:8px;padding:12px;border-radius:8px;text-decoration:none;font-weight:700;text-align:center;background:#f5c542;color:#111}
+a.sec{background:#2a3145;color:#cfe;font-weight:600}
+.small{font-size:.8em;color:#8a93a8;word-break:break-all}
+.hist .row{background:#171b26;border-radius:10px;padding:10px;margin:8px 0}
+#qr{display:none;text-align:center;margin:10px 0}#qr img{background:#fff;padding:8px;border-radius:8px}
+.claim{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+</style></head><body>
+<div class="tn">⚠️ XRPL TESTNET ONLY · TEST XRP HAS NO VALUE · DO NOT SEND REAL XRP ⚠️</div>
+<h1>Crypto Bros&amp;Ho's · Pair SPIN 🎰 (D2 test)</h1>
+<div class="note">Pay <b>11.82 test XRP</b>, then the reels pick a random matched <b>Polaroid + 3D TwiN</b> pair. Nobody sees which pair you get until your payment is confirmed on the ledger. Wrong amount = no spin, your test XRP goes back.<br>
+<span class="small">Test seller wallet (testnet): <b id="sel"></b></span></div>
+<div class="stats"><div><b id="left">…</b>pairs left</div><div><b>11.82</b>test XRP / pair</div></div>
+<label>Your Xaman <b>TESTNET</b> address</label>
+<input id="w" placeholder="r... (your address, switched to Testnet in Xaman)" autocomplete="off">
+<div class="machine">
+ <div class="reels">
+  <div class="reel" id="r1"><img id="i1" alt=""><div class="q" id="q1">?</div><div class="lab" id="l1">POLAROID</div></div>
+  <div class="reel" id="r2"><img id="i2" alt=""><div class="q" id="q2">?</div><div class="lab" id="l2">3D TwiN</div></div>
+ </div>
+ <button class="spin" id="spin">SPIN · 11.82 test XRP</button>
+</div>
+<div id="status"></div>
+<div id="qr"><div class="small">On a computer? Scan with Xaman (on Testnet):</div><img id="qri" width="220" height="220" alt="QR"></div>
+<div id="manual" class="note" style="display:none">Didn't open? In Xaman (on <b>Testnet</b>) tap Send, paste <b id="sel2"></b>, amount <b>11.82</b> XRP, and sign. Keep this page open.<a class="btn" id="xl" target="_blank" rel="noopener">Open payment in Xaman</a></div>
+<div id="claim"></div>
+<h3>Your spins</h3><div class="hist" id="hist"><div class="small">Enter your address to see your spins and claim links.</div></div>
+<p class="small">Fair pick: index = SHA-256(payment tx hash + validating ledger hash) mod remaining pool (sorted). Public log: <a href="results.json" style="color:#8ab">results.json</a>. Pieces are NFTs. Testnet copies here are test pieces with no value.</p>
+<script>
+const SELLER="rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",PRICE="11820000",WSS=["wss://testnet.xrpl-labs.com","wss://s.altnet.rippletest.net:51233"],EXP="https://testnet.xrpl.org";
+const $=id=>document.getElementById(id);$('sel').textContent=SELLER;$('sel2').textContent=SELLER;
+let POOL=[],byUri={},ws=null,wsi=0,reqId=1,pend={},spinTimer=null,watching=null,known=null;
+function conn(){return new Promise((res,rej)=>{if(ws&&ws.readyState===1)return res(ws);const s=new WebSocket(WSS[wsi%WSS.length]);
+ s.onopen=()=>{ws=s;res(s)};s.onerror=()=>{wsi++;rej(new Error('ws'))};s.onclose=()=>{ws=null};
+ s.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pend[m.id]){pend[m.id](m);delete pend[m.id]}}})}
+async function rq(o){for(let k=0;k<3;k++){try{const s=await conn();return await new Promise(r=>{const id=reqId++;pend[id]=r;s.send(JSON.stringify({...o,id}))})}catch(e){await new Promise(r=>setTimeout(r,800))}}throw new Error('ledger connection failed')}
+const hex2s=h=>{try{return decodeURIComponent(h.replace(/(..)/g,'%$1'))}catch(e){return''}};
+const xrp=d=>typeof d==='string'?(Number(d)/1e6).toString():'(non-XRP)';
+function memoOf(tx){try{return hex2s(tx.Memos[0].Memo.MemoData)}catch(e){return''}}
+async function scan(addr){ // read seller history from the testnet ledger and rebuild this buyer's spins
+ let out=[],marker,n=0;do{const r=await rq({command:'account_tx',account:SELLER,limit:200,marker});const R=r.result||{};
+ for(const it of R.transactions||[]){if(!it.validated)continue;const tx=it.tx_json||it.tx,meta=it.meta,h=it.hash||tx.hash;out.push({tx,meta,h})}marker=R.marker;n++}while(marker&&n<5);
+ const pays={};
+ for(const {tx,meta,h} of out){if(tx.TransactionType==='Payment'&&tx.Destination===SELLER&&tx.Account===addr&&meta.TransactionResult==='tesSUCCESS')pays[h]={h,amt:meta.delivered_amount,mints:[],refund:null,date:tx.date}}
+ for(const {tx,meta,h} of out){if(tx.Account!==SELLER)continue;const m=memoOf(tx);const ph=Object.keys(pays).find(k=>m.includes(k));if(!ph)continue;
+  if(tx.TransactionType==='Payment'&&tx.Destination===addr)pays[ph].refund={h,amt:meta.delivered_amount,why:m.split(' ')[1]};
+  if(tx.TransactionType==='NFTokenMint'&&meta.TransactionResult==='tesSUCCESS'){const uri=hex2s(tx.URI||'');pays[ph].mints.push({h,uri,nft:meta.nftoken_id,offer:meta.offer_id,p:byUri[uri]})}
+  if(tx.TransactionType==='NFTokenCreateOffer'&&meta.TransactionResult==='tesSUCCESS'){const mm=pays[ph].mints.find(x=>x.nft===tx.NFTokenID);if(mm)mm.offer=meta.offer_id}}
+ return Object.values(pays).sort((a,b)=>b.date-a.date)}
+function claimHtml(p){const s=p.mints.map(m=>`<div><img src="${m.p?m.p.img:''}" style="width:100%;border-radius:8px"><b class="small" style="color:#eee">${m.p?m.p.name:m.uri}</b>
+ ${m.offer?`<a class="btn" target="_blank" rel="noopener" href="https://test.bithomp.com/en/nft-offer/${m.offer}">Claim (accept 0 XRP offer)</a>`:'<div class="small">offer pending…</div>'}
+ <a class="btn sec" target="_blank" rel="noopener" href="${EXP}/nft/${m.nft}">view on testnet explorer</a></div>`).join('');
+ return `<div class="claim">${s}</div><div class="note"><b>Claim both:</b> in Xaman (on Testnet) open <b>Events → Requests</b>. You'll see 2 NFT offers for <b>0 XRP</b> from <span class="small">${SELLER}</span>. Accept both. Or use the Claim buttons above (Bithomp testnet, sign in with Xaman). Nothing should ever ask you to pay more XRP.</div>`}
+function render(list){const H=$('hist');if(!list.length){H.innerHTML='<div class="small">No spins for this address yet.</div>';return}
+ H.innerHTML=list.map(p=>{let st;if(p.refund)st=`↩️ Refunded ${xrp(p.refund.amt)} test XRP (${p.refund.why||''}) · <a style="color:#8ab" target="_blank" href="${EXP}/transactions/${p.refund.h}">refund tx</a>`;
+  else if(p.amt!==PRICE)st='⏳ Wrong amount, refund coming…';else if(p.mints.length<2)st='🎰 Picking & minting your pair…';else st='✅ Pair ready to claim';
+  return `<div class="row"><div>Paid <b>${xrp(p.amt)}</b> test XRP · <a style="color:#8ab" target="_blank" href="${EXP}/transactions/${p.h}">payment tx</a></div><div>${st}</div>${p.mints.length?claimHtml(p):''}</div>`}).join('')}
+function startReels(){$('r1').classList.add('spinning');$('r2').classList.add('spinning');$('q1').style.display=$('q2').style.display='flex';let k=0;clearInterval(spinTimer);
+ spinTimer=setInterval(()=>{if(!POOL.length)return;k++;$('i1').src=POOL[k%POOL.length].polaroid.img;$('i2').src=POOL[(k*3+1)%POOL.length].twin.img},110)}
+function stopReels(p){clearInterval(spinTimer);$('r1').classList.remove('spinning');$('r2').classList.remove('spinning');
+ if(p){const P=p.mints.find(m=>m.p&&m.p.kind==='polaroid'),T=p.mints.find(m=>m.p&&m.p.kind==='twin');$('q1').style.display=$('q2').style.display='none';
+  if(P){$('i1').src=P.p.img;$('l1').textContent=P.p.name}if(T){$('i2').src=T.p.img;$('l2').textContent=T.p.name}}
+ else{$('q1').textContent=$('q2').textContent='✖';$('i1').removeAttribute('src');$('i2').removeAttribute('src')}}
+const valid=a=>/^r[1-9A-HJ-NP-Za-km-z]{24,34}$/.test(a);
+async function refresh(){const a=$('w').value.trim();if(!valid(a))return null;const L=await scan(a);render(L);return L}
+async function loadLeft(){try{const r=await fetch('results.json?'+Date.now());const j=await r.json();$('left').textContent=j.pairs_left;$('spin').disabled=j.pairs_left<=0;if(j.pairs_left<=0)$('spin').textContent='SOLD OUT (test)'}catch(e){$('left').textContent='?'}}
+const LINK=`https://xaman.app/detect/request:${SELLER}?amount=11.82`;
+$('spin').onclick=async()=>{const a=$('w').value.trim();if(!valid(a)){$('status').textContent='👆 Paste your Xaman TESTNET address first.';return}
+ window.open(LINK,'_blank');
+ history.replaceState(null,'','?wallet='+a);$('claim').innerHTML='';$('q1').textContent=$('q2').textContent='?';$('l1').textContent='POLAROID';$('l2').textContent='3D TwiN';
+ $('status').textContent='Checking…';let L;try{L=await refresh()}catch(e){$('status').textContent='Could not reach the testnet ledger, try again.';return}
+ known=new Set(L.map(p=>p.h));const link=LINK;
+ $('qri').src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data='+encodeURIComponent(link);$('qr').style.display='block';$('manual').style.display='block';
+ startReels();$('status').innerHTML='Opening Xaman… make sure it says <b>TESTNET</b>, check amount <b>11.82</b>, then sign. Waiting for your payment…';
+ watch()};
+async function watch(){clearInterval(watching);watching=setInterval(async()=>{let L;try{L=await refresh()}catch(e){return}if(!L)return;
+ const p=L.find(x=>!known.has(x.h));if(!p)return;
+ if(p.amt!==PRICE){if(p.refund){stopReels(null);clearInterval(watching);$('status').innerHTML=`❌ Wrong amount (${xrp(p.amt)} test XRP). No spin. Refunded ✔ <a style="color:#8ab" target="_blank" href="${EXP}/transactions/${p.refund.h}">refund tx</a>`}
+  else $('status').textContent=`❌ Wrong amount (${xrp(p.amt)} test XRP, needs exactly 11.82). No spin. Sending it back…`;return}
+ if(p.refund){stopReels(null);clearInterval(watching);$('status').textContent='Sold out, your test XRP was refunded.';return}
+ if(p.mints.length<2){$('status').textContent='✅ Payment confirmed on the ledger! Spinning… minting your pair';return}
+ clearInterval(watching);setTimeout(()=>{stopReels(p);$('status').innerHTML='🎉 You got <b>'+(p.mints[0].p?p.mints[0].p.name.split(' #')[0]:'your pair')+'</b>! Claim both below.';$('claim').innerHTML=claimHtml(p);$('qr').style.display='none';$('manual').style.display='none';loadLeft()},1200)},4000)}
+fetch('pool.json?'+Date.now()).then(r=>r.json()).then(j=>{POOL=j.pairs;for(const p of POOL){byUri[p.polaroid.uri]={...p.polaroid,kind:'polaroid'};byUri[p.twin.uri]={...p.twin,kind:'twin'}}
+ $('i1').src=POOL[0].polaroid.img;$('i2').src=POOL[1%POOL.length].twin.img;$('r1').classList.add('spinning');$('r2').classList.add('spinning');
+ const q=new URLSearchParams(location.search).get('wallet');if(q){$('w').value=q;refresh().catch(()=>{})}});
+$('xl').href=LINK;loadLeft();setInterval(loadLeft,30000);
+$('w').addEventListener('change',()=>refresh().catch(()=>{}));
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh().catch(()=>{})});
+</script></body></html>

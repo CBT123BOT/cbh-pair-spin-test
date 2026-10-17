@@ -1,0 +1,113 @@
+{
+ "schema": "ipfs://QmNpi8rcXEkohca8iXu7zysKKSJYqCvBJn3xJwga8jXqWU",
+ "nftType": "art.v0",
+ "name": "Tank Stakely #0637",
+ "description": "XRPL TESTNET ONLY test piece, no value. Ate the last taco from the stand in July '22. Tank Stakely is a Bro Raccoon from Crypto Bros&Ho's, 1,111 punk-cartoon degens on the XRP Ledger. Raccoons are the Ledger Bandits. Got in through the gap where the first ledgers fell out and have rummaged through burned fees and dust trustlines ever since. Its 3D twin, Vinyl #0637, Tank Stakely, lives in the Crypto Bros&Ho's 3D collection.",
+ "image": "https://cbt123bot.github.io/cbh-pair-spin-test/img/polaroid_0637.webp",
+ "collection": {
+  "name": "Crypto Bros&Ho's Polaroids",
+  "family": "Crypto Bros&Ho's"
+ },
+ "attributes": [
+  {
+   "trait_type": "Species",
+   "value": "Raccoon"
+  },
+  {
+   "trait_type": "Vibe",
+   "value": "Bro"
+  },
+  {
+   "trait_type": "Background",
+   "value": "Hot Magenta"
+  },
+  {
+   "trait_type": "Background Style",
+   "value": "Chart Chaos"
+  },
+  {
+   "trait_type": "Backdrop",
+   "value": "None"
+  },
+  {
+   "trait_type": "Hair/Head",
+   "value": "Backwards Cap"
+  },
+  {
+   "trait_type": "Eyewear",
+   "value": "Laser Shades"
+  },
+  {
+   "trait_type": "Mouth",
+   "value": "Big Laugh"
+  },
+  {
+   "trait_type": "Grill",
+   "value": "None"
+  },
+  {
+   "trait_type": "Outfit",
+   "value": "Barista Apron"
+  },
+  {
+   "trait_type": "Print",
+   "value": "None"
+  },
+  {
+   "trait_type": "Accessory",
+   "value": "Diamond Hands"
+  },
+  {
+   "trait_type": "Chain Charm",
+   "value": "None"
+  },
+  {
+   "trait_type": "Liquidity Splash",
+   "value": "None"
+  },
+  {
+   "trait_type": "Pet Sidekick",
+   "value": "None"
+  },
+  {
+   "trait_type": "Pet Joins In",
+   "value": "None"
+  },
+  {
+   "trait_type": "Special",
+   "value": "None"
+  },
+  {
+   "trait_type": "Aura",
+   "value": "None"
+  },
+  {
+   "trait_type": "Riddle Tag",
+   "value": "None"
+  },
+  {
+   "trait_type": "Smiley",
+   "value": "None"
+  },
+  {
+   "trait_type": "Shoulder Gear",
+   "value": "None"
+  },
+  {
+   "trait_type": "Hands FX",
+   "value": "None"
+  },
+  {
+   "trait_type": "Easter Egg",
+   "value": "None"
+  },
+  {
+   "trait_type": "Rarity",
+   "value": "Common"
+  },
+  {
+   "trait_type": "Piece #",
+   "value": "0637"
+  }
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "schema": "ipfs://QmNpi8rcXEkohca8iXu7zysKKSJYqCvBJn3xJwga8jXqWU",
+ "nftType": "art.v0",
+ "name": "Chip Botsworth #0248",
+ "description": "XRPL TESTNET ONLY test piece, no value. Still waiting on that airdrop from 2021. Chip Botsworth is a Bro Bear from Crypto Bros&Ho's, 1,111 punk-cartoon degens on the XRP Ledger. Bears are the Jester Clan. A jester bear taught them to read on a chalkboard one December. They hibernate through bear markets and wake up speaking in riddles. Its 3D twin, Vinyl #0248, Chip Botsworth, lives in the Crypto Bros&Ho's 3D collection.",
+ "image": "https://cbt123bot.github.io/cbh-pair-spin-test/img/polaroid_0248.webp",
+ "collection": {
+  "name": "Crypto Bros&Ho's Polaroids",
+  "family": "Crypto Bros&Ho's"
+ },
+ "attributes": [
+  {
+   "trait_type": "Species",
+   "value": "Bear"
+  },
+  {
+   "trait_type": "Vibe",
+   "value": "Bro"
+  },
+  {
+   "trait_type": "Background",
+   "value": "Mustard"
+  },
+  {
+   "trait_type": "Background Style",
+   "value": "Sunburst"
+  },
+  {
+   "trait_type": "Backdrop",
+   "value": "Escrow Vault Row"
+  },
+  {
+   "trait_type": "Hair/Head",
+   "value": "8-Bit Pixel Beard"
+  },
+  {
+   "trait_type": "Eyewear",
+   "value": "Star Shades"
+  },
+  {
+   "trait_type": "Mouth",
+   "value": "Tongue Out"
+  },
+  {
+   "trait_type": "Grill",
+   "value": "None"
+  },
+  {
+   "trait_type": "Outfit",
+   "value": "Hawaiian Shirt"
+  },
+  {
+   "trait_type": "Print",
+   "value": "None"
+  },
+  {
+   "trait_type": "Accessory",
+   "value": "Energy Drink"
+  },
+  {
+   "trait_type": "Chain Charm",
+   "value": "None"
+  },
+  {
+   "trait_type": "Liquidity Splash",
+   "value": "1 drop"
+  },
+  {
+   "trait_type": "Pet Sidekick",
+   "value": "None"
+  },
+  {
+   "trait_type": "Pet Joins In",
+   "value": "None"
+  },
+  {
+   "trait_type": "Special",
+   "value": "Robot Half"
+  },
+  {
+   "trait_type": "Aura",
+   "value": "Gold Aura"
+  },
+  {
+   "trait_type": "Riddle Tag",
+   "value": "None"
+  },
+  {
+   "trait_type": "Smiley",
+   "value": "None"
+  },
+  {
+   "trait_type": "Shoulder Gear",
+   "value": "None"
+  },
+  {
+   "trait_type": "Hands FX",
+   "value": "None"
+  },
+  {
+   "trait_type": "Easter Egg",
+   "value": "None"
+  },
+  {
+   "trait_type": "Rarity",
+   "value": "Rare"
+  },
+  {
+   "trait_type": "Piece #",
+   "value": "0248"
+  }
+ ]
+}

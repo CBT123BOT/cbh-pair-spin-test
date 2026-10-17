@@ -1,0 +1,121 @@
+{
+ "schema": "ipfs://QmNpi8rcXEkohca8iXu7zysKKSJYqCvBJn3xJwga8jXqWU",
+ "nftType": "art.v0",
+ "name": "Nina Floorman #0047 \u2022 3D TwiN",
+ "description": "XRPL TESTNET ONLY test piece, no value. Follows 588 accounts. Waiting for the right 589th. Nina Floorman is a Ho Ape from Crypto Bros&Ho's, 1,111 punk-cartoon degens on the XRP Ledger. Apes are the Rowboat Tribe. Rowed in during the XLS-20 NFT summer with nothing but oars and conviction, and never left. This is the 3D version. Its Polaroid twin, Nina Floorman #0047, lives in the Crypto Bros&Ho's Polaroids collection.",
+ "image": "https://cbt123bot.github.io/cbh-pair-spin-test/img/twin_0047.webp",
+ "collection": {
+  "name": "CB&H TRADING COMPANY",
+  "family": "Crypto Bros&Ho's"
+ },
+ "attributes": [
+  {
+   "trait_type": "Species",
+   "value": "Ape"
+  },
+  {
+   "trait_type": "Vibe",
+   "value": "Ho"
+  },
+  {
+   "trait_type": "Background",
+   "value": "Mustard"
+  },
+  {
+   "trait_type": "Background Style",
+   "value": "Plain"
+  },
+  {
+   "trait_type": "Backdrop",
+   "value": "None"
+  },
+  {
+   "trait_type": "Hair/Head",
+   "value": "Durag"
+  },
+  {
+   "trait_type": "Ho Glam",
+   "value": "None"
+  },
+  {
+   "trait_type": "Eyewear",
+   "value": "None"
+  },
+  {
+   "trait_type": "Mouth",
+   "value": "Toothy Grin"
+  },
+  {
+   "trait_type": "Grill",
+   "value": "None"
+  },
+  {
+   "trait_type": "Outfit",
+   "value": "Hoodie"
+  },
+  {
+   "trait_type": "Print",
+   "value": "None"
+  },
+  {
+   "trait_type": "Accessory",
+   "value": "None"
+  },
+  {
+   "trait_type": "Chain Charm",
+   "value": "None"
+  },
+  {
+   "trait_type": "Liquidity Splash",
+   "value": "None"
+  },
+  {
+   "trait_type": "Pet Sidekick",
+   "value": "None"
+  },
+  {
+   "trait_type": "Pet Joins In",
+   "value": "None"
+  },
+  {
+   "trait_type": "Special",
+   "value": "None"
+  },
+  {
+   "trait_type": "Aura",
+   "value": "None"
+  },
+  {
+   "trait_type": "Riddle Tag",
+   "value": "None"
+  },
+  {
+   "trait_type": "Smiley",
+   "value": "Smiley Pin"
+  },
+  {
+   "trait_type": "Shoulder Gear",
+   "value": "None"
+  },
+  {
+   "trait_type": "Hands FX",
+   "value": "None"
+  },
+  {
+   "trait_type": "Easter Egg",
+   "value": "None"
+  },
+  {
+   "trait_type": "Rarity",
+   "value": "Common"
+  },
+  {
+   "trait_type": "Piece #",
+   "value": "0047"
+  },
+  {
+   "trait_type": "Version",
+   "value": "3D"
+  }
+ ]
+}

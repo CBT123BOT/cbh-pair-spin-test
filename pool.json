@@ -1,0 +1,71 @@
+{
+ "network": "XRPL TESTNET",
+ "price_xrp": "11.82",
+ "pairs": [
+  {
+   "piece": "0047",
+   "polaroid": {
+    "name": "Nina Floorman #0047",
+    "img": "img/polaroid_0047.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/polaroid_0047.json"
+   },
+   "twin": {
+    "name": "Nina Floorman #0047 \u2022 3D TwiN",
+    "img": "img/twin_0047.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/twin_0047.json"
+   }
+  },
+  {
+   "piece": "0248",
+   "polaroid": {
+    "name": "Chip Botsworth #0248",
+    "img": "img/polaroid_0248.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/polaroid_0248.json"
+   },
+   "twin": {
+    "name": "Chip Botsworth #0248 \u2022 3D TwiN",
+    "img": "img/twin_0248.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/twin_0248.json"
+   }
+  },
+  {
+   "piece": "0405",
+   "polaroid": {
+    "name": "Kip Slippington #0405",
+    "img": "img/polaroid_0405.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/polaroid_0405.json"
+   },
+   "twin": {
+    "name": "Kip Slippington #0405 \u2022 3D TwiN",
+    "img": "img/twin_0405.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/twin_0405.json"
+   }
+  },
+  {
+   "piece": "0637",
+   "polaroid": {
+    "name": "Tank Stakely #0637",
+    "img": "img/polaroid_0637.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/polaroid_0637.json"
+   },
+   "twin": {
+    "name": "Tank Stakely #0637 \u2022 3D TwiN",
+    "img": "img/twin_0637.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/twin_0637.json"
+   }
+  },
+  {
+   "piece": "0966",
+   "polaroid": {
+    "name": "Gordo Sweepstakes #0966",
+    "img": "img/polaroid_0966.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/polaroid_0966.json"
+   },
+   "twin": {
+    "name": "Gordo Sweepstakes #0966 \u2022 3D TwiN",
+    "img": "img/twin_0966.webp",
+    "uri": "https://cbt123bot.github.io/cbh-pair-spin-test/meta/twin_0966.json"
+   }
+  }
+ ]
+}
