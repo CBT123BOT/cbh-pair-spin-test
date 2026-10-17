@@ -68,7 +68,7 @@ function conn(){return new Promise((res,rej)=>{if(ws&&ws.readyState===1)return r
 async function rq(o){for(let k=0;k<3;k++){try{const s=await conn();return await new Promise(r=>{const id=reqId++;pend[id]=r;s.send(JSON.stringify({...o,id}))})}catch(e){await new Promise(r=>setTimeout(r,800))}}throw new Error('ledger')}
 async function nfts(a){let out=[],marker;do{const r=(await rq({command:'account_nfts',account:a,limit:400,marker})).result||{};out=out.concat(r.account_nfts||[]);marker=r.marker}while(marker);return out}
 const img=u=>u&&u.startsWith('ipfs://')?GW+u.slice(7):u;
-async function coinInfo(uri){try{const j=await (await fetch(img(uri))).json();return{name:j.name,img:img(j.image),metal:((j.attributes||[]).find(a=>/metal/i.test(a.trait_type))||{}).value}}catch(e){return{name:uri.split('/').pop(),img:''}}}
+async function coinInfo(uri){try{let r=await fetch(img(uri));if(!r.ok)r=await fetch(img(uri.replace(/\/0+(\d+\.json)$/,'/$1')));const j=await r.json();return{name:j.name,img:img(j.image),metal:((j.attributes||[]).find(a=>/metal/i.test(a.trait_type))||{}).value}}catch(e){return{name:uri.split('/').pop(),img:''}}}
 async function load(){VP=await (await fetch('vault_pool.json?'+Date.now())).json();try{RES=await (await fetch('vault_results.json?'+Date.now())).json();$('stash').textContent=RES.stash_left}catch(e){}}
 async function myPairs(){const a=$('w').value.trim();if(!valid(a))return;const have={};for(const n of await nfts(a))if(n.Issuer===SELLER)have[hex2s(n.URI||'')]=n;
  const L=[];for(const [N,p] of Object.entries(VP.pairs)){const P=have[p.polaroid.uri_coin],T=have[p.twin.uri_coin];const Pn=have[p.polaroid.uri_nocoin],Tn=have[p.twin.uri_nocoin];
