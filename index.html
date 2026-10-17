@@ -85,8 +85,8 @@ const done=p=>!!p.refund||p.mints.length>=2;
 function claimHtml(p){const s=[...p.mints].sort((a,b)=>(a.p&&a.p.kind==='polaroid'?0:1)-(b.p&&b.p.kind==='polaroid'?0:1)).map(m=>`<div><img src="${m.p?m.p.img:''}" style="width:100%;border-radius:8px"><b class="small" style="color:#eee">${m.p?m.p.name:m.uri}</b>
  ${m.offer?`<a class="btn sec" target="_blank" rel="noopener" href="https://test.bithomp.com/en/nft-offer/${m.offer}">offer on Bithomp (testnet)</a>`:'<div class="small">offer pending…</div>'}
  <a class="btn sec" target="_blank" rel="noopener" href="${EXP}/nft/${m.nft}">view on testnet explorer</a></div>`).join('');
- const offs=p.mints.filter(m=>m.offer).map(m=>m.offer);const cb=(XM&&connected&&offs.length)?`<a class="btn" href="#" onclick='claimAll(${JSON.stringify(offs)});return false'>CLAIM BOTH in Xaman</a>`:'';
- return cb+`<div class="claim">${s}</div><div class="note"><b>Claim both:</b> ${cb?'tap CLAIM BOTH and sign the 2 requests in Xaman, or ':''}in Xaman (on Testnet) open <b>Events → Requests</b> and accept the 2 NFT offers for <b>0 XRP</b> from <span class="small">${SELLER}</span>. Claiming never costs XRP.</div>`}
+ const cb=(XM&&connected)?[...p.mints].sort((a,b)=>(a.p&&a.p.kind==='polaroid'?0:1)-(b.p&&b.p.kind==='polaroid'?0:1)).filter(m=>m.offer).map(m=>`<a class="btn cl" data-offer="${m.offer}" href="#" onclick='claimOne(this,"${m.offer}");return false'>CLAIM ${m.p&&m.p.kind==='twin'?'3D TwiN':'POLAROID'} in Xaman</a>`).join(''):'';setTimeout(markClaimed,60);
+ return cb+`<div class="claim">${s}</div><div class="note"><b>Claim both:</b> ${cb?'tap each CLAIM button and sign it in Xaman (one at a time), or ':''}in Xaman (on Testnet) open <b>Events → Requests</b> and accept the 2 NFT offers for <b>0 XRP</b> from <span class="small">${SELLER}</span>. Claiming never costs XRP.</div>`}
 function render(list){const H=$('hist');if(!list.length){H.innerHTML='<div class="small">No spins for this address yet.</div>';return}
  H.innerHTML=list.map(p=>{let st;if(p.refund)st=`↩️ Refunded ${xrp(p.refund.amt)} test XRP (${p.refund.why||''}) · <a style="color:#8ab" target="_blank" href="${EXP}/transactions/${p.refund.h}">refund tx</a>`;
   else if(p.mints.length>=2)st='✅ Pair ready to claim';else st='🎰 Checking / minting your pair…';
@@ -110,6 +110,9 @@ if(window.CBH_XAMAN_API_KEY){const sc=document.createElement('script');sc.src='h
  XM.on('logout',()=>{connected=false;$('connect').textContent='🔗 Connect Xaman (sign in)';gateBtn()});
  XM.on('success',async()=>{const a=await XM.user.account;$('w').value=a;connected=true;$('connect').textContent='✅ Connected: '+a.slice(0,6)+'…'+a.slice(-4)+' (tap to disconnect)';gateBtn();resume()})};
  sc.onerror=()=>{XM=null;$('w').readOnly=false;gateBtn()};document.head.appendChild(sc)}
+async function markClaimed(){for(const b of document.querySelectorAll('a.cl')){try{const r=await rq({command:'ledger_entry',index:b.dataset.offer});if(r.error==='entryNotFound'||(r.result&&r.result.error==='entryNotFound')){b.textContent='✅ '+b.textContent.replace('CLAIM','CLAIMED').replace(' in Xaman','');b.style.opacity='.55';b.onclick=e=>{e.preventDefault();return false}}}catch(e){}}}
+async function claimOne(btn,offer){if(!XM)return;try{await xamanSign({TransactionType:'NFTokenAcceptOffer',NFTokenSellOffer:offer},'Claim your CB&H test NFT (0 XRP)')}catch(e){$('status').textContent='Xaman: '+e.message}setTimeout(markClaimed,4000)}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(markClaimed,1500)});
 async function claimAll(offers){if(!XM)return;try{for(const o of offers){await xamanSign({TransactionType:'NFTokenAcceptOffer',NFTokenSellOffer:o},'Claim your CB&H test NFT (0 XRP)')}}catch(e){$('status').textContent='Xaman: '+e.message}refresh().catch(()=>{})}
 const valid=a=>/^r[1-9A-HJ-NP-Za-km-z]{24,34}$/.test(a);
 function gateBtn(){const a=$('w').value.trim(),b=$('spin');const walletOk=XM?connected&&valid(a):valid(a);
