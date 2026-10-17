@@ -7,7 +7,7 @@
  "pairs_total": 5,
  "pairs_left": 1,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T21:40:49.543806+00:00",
+ "updated": "2026-10-17T21:41:26.308799+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -250,6 +250,20 @@
    "reason": "WRONG_AMOUNT",
    "refund_drops": "2220000",
    "refund_tx": "3665BF68ED775A7E5E4E7F350DA95A689E9BAC576DD6BB1A5F76DC8EEA8D4592",
+   "refund_result": "tesSUCCESS"
+  },
+  {
+   "t": 1792273279.888219,
+   "time_utc": "2026-10-17T21:41:19.888223+00:00",
+   "payment_tx": "64023D7AEB812AF7998F4F98189E628A32B5768BA8BBE51227ABCD14545147F5",
+   "ledger_index": 21614931,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "1110000",
+   "expected_drops": "34740000",
+   "action": "refund",
+   "reason": "WRONG_AMOUNT",
+   "refund_drops": "1110000",
+   "refund_tx": "FDA4A04C41752B3A3734563276CC82F52770DE7402895DAC2D684E0757EB07ED",
    "refund_result": "tesSUCCESS"
   }
  ]
