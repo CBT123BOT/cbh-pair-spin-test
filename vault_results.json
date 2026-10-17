@@ -5,7 +5,9 @@
   "d1": 3,
   "d2_plus": 2
  },
- "stash_left": 24,
+ "stash_left": 14120,
+ "coins_left": 14120,
+ "giveaway_stash_in_wallet": 24,
  "used_pairs": {
   "0405": {
    "holder": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
@@ -532,6 +534,6 @@
    ]
   }
  ],
- "rule": "pick i = SHA-256(proof/payment tx hash + validating ledger hash + byte i) mod pool size; pool = stash NFTokenIDs sorted (vault spins, used first), then never-minted coin numbers sorted (mn_remaining.json); pool shrinks each pick",
- "updated": "2026-10-17T21:46:36.331643+00:00"
+ "rule": "pick i = SHA-256(proof/payment tx hash + validating ledger hash + byte i) mod pool size; pool = never-minted coin numbers sorted (mn_remaining.json); pool shrinks each pick",
+ "updated": "2026-10-17T21:52:46.755523+00:00"
 }
