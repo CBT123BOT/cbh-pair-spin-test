@@ -7,7 +7,7 @@
  "pairs_total": 5,
  "pairs_left": 1,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T16:50:18.656189+00:00",
+ "updated": "2026-10-17T19:14:49.524872+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -167,6 +167,20 @@
     "mint_tx": "4B1AF118C09EF4ADEBA9FCAAD8C912F1E61D65A38D0FA1F6BA528846D9AEC19B",
     "name": "Chip Botsworth #0248 \u2022 3D TwiN"
    }
+  },
+  {
+   "t": 1792264484.602031,
+   "time_utc": "2026-10-17T19:14:44.602060+00:00",
+   "payment_tx": "68CA815BC0676DE62359F711C59C348D1829219E5097DEAD671B05ECEF1FD4DF",
+   "ledger_index": 21612289,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "1",
+   "expected_drops": "34740000",
+   "action": "refund",
+   "reason": "WRONG_AMOUNT",
+   "refund_drops": "1",
+   "refund_tx": "4F8DEDF5535B604C94132B8364DC41975E9B1D7A3A3090BE4B80F446C6918D9C",
+   "refund_result": "tesSUCCESS"
   }
  ]
 }
