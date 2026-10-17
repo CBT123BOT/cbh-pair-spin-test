@@ -1,13 +1,13 @@
 {
  "network": "XRPL TESTNET ONLY",
  "seller": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
- "wave": "D3",
- "price_xrp": "14.22",
- "pairs_sold": 3,
+ "wave": "D4",
+ "price_xrp": "34.74",
+ "pairs_sold": 4,
  "pairs_total": 5,
- "pairs_left": 2,
+ "pairs_left": 1,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T16:27:53.277973+00:00",
+ "updated": "2026-10-17T16:50:18.656189+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -134,6 +134,38 @@
     "offer_id": "0B3C26CE2B2838628D0FC92014EA9AB03BD9DCC7CAB7FCB83A1BF6215DF99066",
     "mint_tx": "232AB99505B24D2D8D162CC8B2D34F2643F47D9FA431DEDDB23F167DAFA96A08",
     "name": "Tank Stakely #0637 \u2022 3D TwiN"
+   }
+  },
+  {
+   "t": 1792255804.9757364,
+   "time_utc": "2026-10-17T16:50:04.975749+00:00",
+   "payment_tx": "80A71C7917349DEECB8A190E97A7C4BDA6DFAFC0BB91C59D506A067935F4A425",
+   "ledger_index": 21609668,
+   "buyer": "rNxAwKP3rdNTfe4ZNw1SntXCfW2U4r2XuB",
+   "delivered": "14220000",
+   "action": "pair",
+   "wave": "D3",
+   "price_drops": "14220000",
+   "piece": "0248",
+   "pick": {
+    "ledger_hash": "0A6FFBE8A595B88CA478DC4C3BBF6973365122702F62EC5C62EC1E915B01266A",
+    "pool": [
+     "0248",
+     "0405"
+    ],
+    "index": 0
+   },
+   "polaroid": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001EA18748450149B8A6",
+    "offer_id": "EDD575E116951C5AFAB40720EA5BC5C76510100C15442DAF5C686509A0EE35D0",
+    "mint_tx": "5493FA6F4F973769584E1F0143C8E5D02F89565E4B2B945012DCE960DB017448",
+    "name": "Chip Botsworth #0248"
+   },
+   "twin": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001EB86D19470149B8A7",
+    "offer_id": "634954B8356B22055B20024692C9AFEF2F3D660B171C5E5E1E32471F1311378C",
+    "mint_tx": "4B1AF118C09EF4ADEBA9FCAAD8C912F1E61D65A38D0FA1F6BA528846D9AEC19B",
+    "name": "Chip Botsworth #0248 \u2022 3D TwiN"
    }
   }
  ]
