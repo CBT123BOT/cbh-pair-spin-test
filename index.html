@@ -28,16 +28,15 @@ a.sec{background:#2a3145;color:#cfe;font-weight:600}
 #qr{display:none;text-align:center;margin:10px 0}#qr img{background:#fff;padding:8px;border-radius:8px}
 .claim{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;margin:-16px -16px 12px;padding:10px 14px;background:linear-gradient(180deg,#1a1508,#0d0f14);border-bottom:2px solid #f5c542;box-shadow:0 4px 18px rgba(245,197,66,.18)}
-.plug{width:54px;height:54px;flex:0 0 54px;perspective:400px}.plug img{width:100%;height:100%;border-radius:50%;animation:coin 6s linear infinite;filter:drop-shadow(0 0 6px rgba(245,197,66,.55))}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:14px;margin:-16px -16px 14px;padding:12px 16px;background:linear-gradient(180deg,#1a1508,#0d0f14);border-bottom:2px solid #f5c542;box-shadow:0 4px 18px rgba(245,197,66,.18)}
+.plug{width:96px;height:96px;flex:0 0 96px;perspective:400px}.plug img{width:100%;height:100%;border-radius:50%;animation:coin 6s linear infinite;filter:drop-shadow(0 0 6px rgba(245,197,66,.55))}
 @keyframes coin{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
 @media (prefers-reduced-motion:reduce){.plug img{animation:none}}
-.tb-info{flex:1;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
-.chip{border:1px solid #f5c542;border-radius:999px;padding:5px 11px;font-weight:800;color:#f5c542;background:rgba(245,197,66,.08);font-size:.92em;white-space:nowrap}
+.tb-info{flex:1;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.chip{border:1.5px solid #f5c542;border-radius:999px;padding:7px 16px;font-weight:900;color:#f5c542;background:rgba(245,197,66,.08);font-size:1.25em;white-space:nowrap;letter-spacing:.5px}
 .chip small{color:#cdb46a;font-weight:600;margin-right:4px}
 </style></head><body>
 <div class="topbar"><div class="plug"><img src="img/the_plug.png" alt="THE plug, Crypto Bros &amp; Ho's Trading Company"></div><div class="tb-info"><span class="chip"><small>DROP</small><span id="wv2">…</span></span><span class="chip"><small>MINT</small><span class="pz">…</span> XRP</span></div></div>
-<div class="title" data-text="Crypto Bros&amp;Ho's Trading Company" role="heading" aria-level="1">Crypto Bros&amp;Ho's Trading Company</div>
 <div class="tn">⚠️ XRPL TESTNET ONLY · TEST XRP HAS NO VALUE · DO NOT SEND REAL XRP ⚠️</div>
 <h1>Pair SPIN 🎰 <span id="wv">…</span> (test)</h1>
 <div class="note">Pay the pair price (<b><span class="pz">…</span> test XRP</b>, locked in the Xaman request), then the reels pick a random matched <b>Polaroid + 3D TwiN</b> pair. Nobody sees which pair you get until your payment is confirmed on the ledger. Wrong amount = no spin, your test XRP goes back.<br>
@@ -153,4 +152,6 @@ fetch('pool.json?'+Date.now()).then(r=>r.json()).then(j=>{POOL=j.pairs;for(const
 setInterval(()=>loadPrice(),30000);
 $('w').addEventListener('input',gateBtn);$('w').addEventListener('change',()=>refresh().catch(()=>{}));
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)resume()});window.addEventListener('pageshow',e=>{if(e.persisted)resume()});
-</script></body></html>
+</script><div class="footer" style="margin:30px -16px -16px;padding:22px 10px 26px;border-top:2px solid #f5c542;background:linear-gradient(0deg,#1a1508,#0d0f14)"><div class="title" data-text="Crypto Bros&amp;Ho's Trading Company" role="heading" aria-level="1">Crypto Bros&amp;Ho's Trading Company</div>
+</div>
+</body></html>
