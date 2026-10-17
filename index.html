@@ -42,11 +42,11 @@ a.sec{background:#2a3145;color:#cfe;font-weight:600}
   <div class="reel" id="r1"><img id="i1" alt=""><div class="q" id="q1">?</div><div class="lab" id="l1">POLAROID</div></div>
   <div class="reel" id="r2"><img id="i2" alt=""><div class="q" id="q2">?</div><div class="lab" id="l2">3D TwiN</div></div>
  </div>
- <button class="spin" id="spin">SPIN · 11.82 test XRP</button>
+ <button class="spin" id="spin" disabled>Connect wallet to SPIN</button>
 </div>
 <div id="status"></div>
 <div id="qr"><div class="small">On a computer? Scan with Xaman (on Testnet):</div><img id="qri" width="220" height="220" alt="QR"></div>
-<div id="manual" class="note" style="display:none">Didn't open? In Xaman (on <b>Testnet</b>) tap Send, paste <b id="sel2"></b>, amount <b>11.82</b> XRP, and sign. Keep this page open.<a class="btn" id="xl" target="_blank" rel="noopener">Open payment in Xaman</a></div>
+<div id="manual" class="note" style="display:none">Xaman didn't open? <span class="small">The amount is locked at 11.82 in the request, you don't type anything.</span><a class="btn" id="xl" target="_blank" rel="noopener">Open payment in Xaman</a></div>
 <div id="claim"></div>
 <h3>Your spins</h3><div class="hist" id="hist"><div class="small">Enter your address to see your spins and claim links.</div></div>
 <p class="small">Fair pick: index = SHA-256(payment tx hash + validating ledger hash) mod remaining pool (sorted). Public log: <a href="results.json" style="color:#8ab">results.json</a>. Pieces are NFTs. Testnet copies here are test pieces with no value.</p>
@@ -95,14 +95,21 @@ async function xamanSign(txjson){ // creates a Xaman sign request, opens it (pho
  if(isMobile)location.href=created.next.always;else{$('qri').src=created.refs.qr_png;$('qr').style.display='block'}
  return resolved}
 if(window.CBH_XAMAN_API_KEY){const sc=document.createElement('script');sc.src='https://xumm.app/assets/cdn/xumm.min.js';sc.onload=()=>{
- XM=new Xumm(window.CBH_XAMAN_API_KEY);$('connect').style.display='block';$('connect').onclick=e=>{e.preventDefault();XM.authorize()};
- XM.on('success',async()=>{const a=await XM.user.account;$('w').value=a;$('connect').textContent='✅ Connected: '+a.slice(0,6)+'…'+a.slice(-4);refresh().catch(()=>{})})};document.head.appendChild(sc)}
+ XM=new Xumm(window.CBH_XAMAN_API_KEY);gateBtn();XM.on('logout',()=>{connected=false;$('w').readOnly=false;gateBtn()});$('connect').style.display='block';$('connect').onclick=e=>{e.preventDefault();XM.authorize()};
+ XM.on('success',async()=>{const a=await XM.user.account;$('w').value=a;$('w').readOnly=true;connected=true;gateBtn();$('connect').textContent='✅ Connected: '+a.slice(0,6)+'…'+a.slice(-4);refresh().catch(()=>{})})};document.head.appendChild(sc)}
 async function claimAll(offers){if(!XM)return;for(const o of offers){await xamanSign({TransactionType:'NFTokenAcceptOffer',NFTokenSellOffer:o})}refresh().catch(()=>{})}
 const valid=a=>/^r[1-9A-HJ-NP-Za-km-z]{24,34}$/.test(a);
+
+let priceOk=false,left=0,connected=false;
+function gateBtn(){const a=$('w').value.trim(),b=$('spin');const walletOk=XM?connected&&valid(a):valid(a);
+ if(left<=0&&priceOk){b.disabled=true;b.textContent='SOLD OUT (test)';return}
+ if(!priceOk){b.disabled=true;b.textContent='Loading price…';return}
+ if(!walletOk){b.disabled=true;b.textContent=XM?'Connect Xaman to SPIN':'Enter your address to SPIN';return}
+ b.disabled=false;b.textContent='SPIN · 11.82 test XRP'}
 async function refresh(){const a=$('w').value.trim();if(!valid(a))return null;const L=await scan(a);render(L);return L}
-async function loadLeft(){try{const r=await fetch('results.json?'+Date.now());const j=await r.json();$('left').textContent=j.pairs_left;$('spin').disabled=j.pairs_left<=0;if(j.pairs_left<=0)$('spin').textContent='SOLD OUT (test)'}catch(e){$('left').textContent='?'}}
+async function loadLeft(){try{const r=await fetch('results.json?'+Date.now());const j=await r.json();left=j.pairs_left;$('left').textContent=left;priceOk=(j.price_xrp==='11.82'&&Math.round(Number(j.price_xrp)*1e6).toString()===PRICE)}catch(e){$('left').textContent='?';priceOk=false}gateBtn()}
 const LINK=`https://xaman.app/detect/request:${SELLER}?amount=11.82`;
-$('spin').onclick=async()=>{const a=$('w').value.trim();if(!valid(a)){$('status').textContent='👆 Paste your Xaman TESTNET address first.';return}
+$('spin').onclick=async()=>{const a=$('w').value.trim();if($('spin').disabled||!priceOk||!valid(a)||(XM&&!connected)){$('status').textContent='👆 Paste your Xaman TESTNET address first.';return}
  if(XM){xamanSign({TransactionType:'Payment',Destination:SELLER,Amount:PRICE}).catch(()=>{})}else window.open(LINK,'_blank');
  history.replaceState(null,'','?wallet='+a);$('claim').innerHTML='';$('q1').textContent=$('q2').textContent='?';$('l1').textContent='POLAROID';$('l2').textContent='3D TwiN';
  $('status').textContent='Checking…';let L;try{L=await refresh()}catch(e){$('status').textContent='Could not reach the testnet ledger, try again.';return}
@@ -119,8 +126,8 @@ async function watch(){clearInterval(watching);watching=setInterval(async()=>{le
  clearInterval(watching);setTimeout(()=>{stopReels(p);$('status').innerHTML='🎉 You got <b>'+(p.mints[0].p?p.mints[0].p.name.split(' #')[0]:'your pair')+'</b>! Claim both below.';$('claim').innerHTML=claimHtml(p);$('qr').style.display='none';$('manual').style.display='none';loadLeft()},1200)},4000)}
 fetch('pool.json?'+Date.now()).then(r=>r.json()).then(j=>{POOL=j.pairs;for(const p of POOL){byUri[p.polaroid.uri]={...p.polaroid,kind:'polaroid'};byUri[p.twin.uri]={...p.twin,kind:'twin'}}
  $('i1').src=POOL[0].polaroid.img;$('i2').src=POOL[1%POOL.length].twin.img;$('r1').classList.add('spinning');$('r2').classList.add('spinning');
- const q=new URLSearchParams(location.search).get('wallet');if(q){$('w').value=q;refresh().catch(()=>{})}});
+ const q=new URLSearchParams(location.search).get('wallet');if(q){$('w').value=q;gateBtn();refresh().catch(()=>{})}});
 $('xl').href=LINK;loadLeft();setInterval(loadLeft,30000);
-$('w').addEventListener('change',()=>refresh().catch(()=>{}));
+$('w').addEventListener('input',gateBtn);$('w').addEventListener('change',()=>refresh().catch(()=>{}));
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh().catch(()=>{})});
 </script></body></html>
