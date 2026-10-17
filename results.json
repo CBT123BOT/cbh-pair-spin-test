@@ -5,6 +5,20 @@
  "pairs_total": 5,
  "pairs_left": 5,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T15:51:52.465787+00:00",
- "events": []
+ "updated": "2026-10-17T15:52:28.726207+00:00",
+ "events": [
+  {
+   "t": 1792252343.3804402,
+   "time_utc": "2026-10-17T15:52:23.380445+00:00",
+   "payment_tx": "16713AEB3295BF70F45878B3BFF8750C5A219DACC609F58CCDA049CF89873D72",
+   "ledger_index": 21608680,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "5000000",
+   "action": "refund",
+   "reason": "WRONG_AMOUNT",
+   "refund_drops": "5000000",
+   "refund_tx": "33DA3FA2C0DD5D9BD181DD64FD33ED48399091DFE2EF0262FBCA140194D6AA31",
+   "refund_result": "tesSUCCESS"
+  }
+ ]
 }
