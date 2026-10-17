@@ -3,9 +3,9 @@
  "seller": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
  "price_xrp": "11.82",
  "pairs_total": 5,
- "pairs_left": 5,
+ "pairs_left": 4,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T15:52:28.726207+00:00",
+ "updated": "2026-10-17T15:53:00.923718+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
@@ -19,6 +19,39 @@
    "refund_drops": "5000000",
    "refund_tx": "33DA3FA2C0DD5D9BD181DD64FD33ED48399091DFE2EF0262FBCA140194D6AA31",
    "refund_result": "tesSUCCESS"
+  },
+  {
+   "t": 1792252366.3687434,
+   "time_utc": "2026-10-17T15:52:46.368753+00:00",
+   "payment_tx": "04480631188BA19F2FD238E6D01FFD29D368C48DC43BBA6127380FEC7723A760",
+   "ledger_index": 21608687,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "11820000",
+   "action": "pair",
+   "piece": "0047",
+   "pick": {
+    "ledger_hash": "71EDFD2D3C3A9864A9F03F5761D8C6747265F515D13561CBEE81483B766639C8",
+    "pool": [
+     "0047",
+     "0248",
+     "0405",
+     "0637",
+     "0966"
+    ],
+    "index": 0
+   },
+   "polaroid": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E1824623F0149B8A0",
+    "offer_id": "89668A48733F64AE0078AF8BF7B100F20412B6548D6AAE90A81DDAE7B10081E3",
+    "mint_tx": "A13A76A7EE29CDF89F28F23A6A069E1CD453D1BF3213A3B67EAC4AF6DA7A8C62",
+    "name": "Nina Floorman #0047"
+   },
+   "twin": {
+    "nft_id": "00181770DF9E30F5734320D1D1FFBF0BE460E811777E001E2F0A33390149B8A1",
+    "offer_id": "EEC3B50B13BA6FCF7232E1AB08C8D19554EEA6C0C52862804508A70C7710A0E6",
+    "mint_tx": "109173F24876578C93AD0BEF2FBCFFC631CE7A1D38C42224F87CE65DDCAA7AA6",
+    "name": "Nina Floorman #0047 \u2022 3D TwiN"
+   }
   }
  ]
 }
