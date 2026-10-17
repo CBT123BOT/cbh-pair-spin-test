@@ -249,8 +249,22 @@
      "mint_tx": "BF7CA6289661414DD87F59DAAE4FF29780DF26D96B993F449537E883CF1F4E89"
     }
    ]
+  },
+  {
+   "t": 1792273279.006435,
+   "time_utc": "2026-10-17T21:41:19.006439+00:00",
+   "payment_tx": "64023D7AEB812AF7998F4F98189E628A32B5768BA8BBE51227ABCD14545147F5",
+   "ledger_index": 21614931,
+   "buyer": "raYF9uKscA3jQK2F1szkfVoJMRynroqFcB",
+   "delivered": "1110000",
+   "expected": "3.33 XRP x 1..10",
+   "action": "refund",
+   "reason": "WRONG_AMOUNT",
+   "refund_drops": "1110000",
+   "refund_tx": "1B63B84AB31AAC286D7025B4E1D3F895CFD56F61AE45B91B0262D549790EADD0",
+   "refund_result": "tesSUCCESS"
   }
  ],
  "rule": "pick i = SHA-256(proof/payment tx hash + validating ledger hash + byte i) mod pool size; pool = stash NFTokenIDs sorted (vault spins, used first), then never-minted coin numbers sorted (mn_remaining.json); pool shrinks each pick",
- "updated": "2026-10-17T21:40:56.172376+00:00"
+ "updated": "2026-10-17T21:41:27.378952+00:00"
 }
