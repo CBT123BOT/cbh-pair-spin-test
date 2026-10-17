@@ -1,11 +1,13 @@
 {
  "network": "XRPL TESTNET ONLY",
  "seller": "rMPPUa5gEutg4rBywgqBdUBHKGcycG6u5H",
+ "wave": "D2",
  "price_xrp": "11.82",
+ "pairs_sold": 1,
  "pairs_total": 5,
  "pairs_left": 4,
  "fair_random": "index = int(SHA-256(bytes(payment_tx_hash + validating_ledger_hash))) mod len(remaining pool sorted by piece #)",
- "updated": "2026-10-17T15:53:00.923718+00:00",
+ "updated": "2026-10-17T16:23:53.720717+00:00",
  "events": [
   {
    "t": 1792252343.3804402,
